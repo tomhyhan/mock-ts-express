@@ -4,7 +4,7 @@ import * as winston from 'winston';
 import * as expressWinston from 'express-winston';
 import cors from 'cors';
 import { CommonRoutesConfig } from './common/common.routes.config.js';
-import { UserRoutes } from './users/users.routes.config.js';
+import { UsersRoutes } from './users/users.routes.config.js';
 import debug from 'debug';
 
 const port = 3000;
@@ -36,7 +36,7 @@ export class App {
 
     // here we are adding the UserRoutes to our array,
     // after sending the Express.js application object to have the routes added to our app!
-    routes.push(new UserRoutes(app));
+    routes.push(new UsersRoutes(app));
     routes.forEach((route: CommonRoutesConfig) => {
       debugLog(`Routes configured for ${route.name}`);
     });

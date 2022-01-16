@@ -18,12 +18,21 @@ class UsersDao {
     this.users.push(user);
     return user.id;
   }
+
   async getUsers() {
     return this.users;
   }
 
   async getUserById(userId: string) {
     return this.users.find((user: { id: string }) => user.id === userId);
+  }
+
+  async putUserById(userId: string, user: PutUserDto) {
+    const objIndex = this.users.findIndex(
+      (obj: { id: string }) => obj.id === userId
+    );
+    this.users.splice(objIndex, 1, user);
+    return `${user.id} updated via put`;
   }
 
   async patchUserById(userId: string, user: PatchUserDto) {
@@ -68,4 +77,5 @@ class UsersDao {
   }
 }
 
+// singletom that provides same user array (Always!)
 export default new UsersDao();
