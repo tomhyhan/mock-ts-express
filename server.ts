@@ -37,6 +37,9 @@ export class App {
     // here we are adding the UserRoutes to our array,
     // after sending the Express.js application object to have the routes added to our app!
     routes.push(new UserRoutes(app));
+    routes.forEach((route: CommonRoutesConfig) => {
+      debugLog(`Routes configured for ${route.name}`);
+    });
     return app;
   }
 }
