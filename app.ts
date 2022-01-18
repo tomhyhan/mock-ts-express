@@ -1,5 +1,11 @@
 import { App } from './server.js';
 import express from 'express';
+import dotenv from 'dotenv';
+
+const dotenvResult = dotenv.config();
+if (dotenvResult.error) {
+  throw dotenvResult.error;
+}
 
 const port = 3000;
 
